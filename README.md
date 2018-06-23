@@ -1,13 +1,12 @@
 # nos1kg7at_infra
 nos1kg7at Infra repository
-+# Выполнено ДЗ №4
-+
+Выполнено ДЗ №4
 + - [x] Основное ДЗ
 + - [x] Задание со *
-+
 +## В процессе сделано:
     1. сделаны простые скрипты на sh для инсталяции пререквезитов для проекта
     2. на основе него сделан скрипт для провижининга и старта приложения reddit
+
 	gcloud compute instances create reddit-app\
   --boot-disk-size=10GB \
   --image-family ubuntu-1604-lts \
@@ -31,14 +30,12 @@ cd reddit && bundle install && puma -d'
 	gcloud compute firewall-rules list |grep -i puma
 +## Как запустить проект:
 + - n/a
-+
-
 +## Как проверить работоспособность:
-+#OVPN task for GCP
-+bastion_IP=35.228.195.42
-+someinternalhost_IP=10.166.0.3
-+testapp_IP=35.228.176.76
-+testapp_port=9292
+#OVPN task for GCP
+bastion_IP=35.228.195.42
+someinternalhost_IP=10.166.0.3
+testapp_IP=35.228.176.76
+testapp_port=9292
 open public browser thru http://35.228.176.76:9292 to test reddit
 +
 +## PR checklist
