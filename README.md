@@ -35,10 +35,10 @@ cd reddit && bundle install && puma -d'
 
 +## Как проверить работоспособность:
 +#OVPN task for GCP
-+bastion_IP = 35.228.195.42
-+someinternalhost_IP = 10.166.0.3
-testapp_IP = 35.228.176.76
-testapp_port = 9292
++bastion_IP=35.228.195.42
++someinternalhost_IP=10.166.0.3
++testapp_IP=35.228.176.76
++testapp_port=9292
 open public browser thru http://35.228.176.76:9292 to test reddit
 +
 +## PR checklist
