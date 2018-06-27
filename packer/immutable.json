@@ -29,6 +29,7 @@
        }
    ],
    "provisioners": [
+<<<<<<< HEAD
         {
            "type": "shell",
            "script": "scripts/install_ruby.sh",
@@ -40,6 +41,8 @@
            "execute_command": "sudo {{.Path}}"
         },
 
+=======
+>>>>>>> 907f14ed0d83d12408260c946a820972c3e8eb91
        {
            "type": "shell",
            "script": "files/install_reddit.sh",
