@@ -11,7 +11,7 @@ resource "google_compute_instance" "app" {
   count = "${var.count}"
 
   metadata {
-    ssh-keys = "noskov:${file(var.public_key_path)} appuser1:${file(var.public_key_path)} appuser2:${file(var.public_key_path)}"
+    ssh-keys = "noskov:${file(var.public_key_path)}\nappuser1:${file(var.public_key_path)}\nappuser2:${file(var.public_key_path)}"
   }
 
   #added private key
