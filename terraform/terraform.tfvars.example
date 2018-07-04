@@ -1,0 +1,4 @@
+project = "infra-0987654312"
+public_key_path = "~/.ssh/noskov.pub"
+private_key_path = "~/.ssh/noskov"
+disk_image = "reddit-base"
