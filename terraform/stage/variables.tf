@@ -4,7 +4,7 @@ variable project {
 
 variable region {
   description = "Region"
-  default     = "europe-west1"
+  default     = "europe-west3"
 }
 
 variable public_key_path {
@@ -21,7 +21,7 @@ variable private_key_path {
 
 variable zone {
   description = "Region"
-  default     = "europe-west1-c"
+  default     = "europe-west3-c"
 }
 
 variable "count" {
