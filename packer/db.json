@@ -18,7 +18,7 @@
             "image_family":  "{{user `image_family`}}",
             "source_image_family": "{{user `source_image_family`}}",
             "zone": "europe-west1-c",
-            "ssh_username": "noskov",
+            "ssh_username": "appuser",
             "machine_type": "{{user `machine_type`}}",
 	    "disk_size": "{{user `disk_size`}}",
 	    "disk_type": "{{user `disk_type`}}",
@@ -29,9 +29,8 @@
     ],
     "provisioners": [
 	{
-            "type": "shell",
-	    "script": "scripts/install_mongodb.sh",
-            "execute_command": "sudo {{.Path}}"
-	}
+            "type": "ansible",
+	    "playbook_file": "ansible/packer_db.yml"
+        }
     ]
 }
