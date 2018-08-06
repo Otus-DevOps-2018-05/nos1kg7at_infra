@@ -6,4 +6,4 @@
 .terraform/
 infra-207813.json
 *.retry
-*gce*
+gce*
