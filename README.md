@@ -106,3 +106,25 @@ PR checklist
  - [x] Выставил label с номером домашнего задания
  - [x] Выставил label с темой домашнего задания
 
+# Выполнено ДЗ №10
+
+ - [x] Основное ДЗ
+ - [x] Задание со *
+
+## В процессе сделано:
+ - Переопределена структура
+ - Использованы файлы environments db и app
+ - Использована роль nginx из community
+ - Применён ansible vault 
+ - Настроен ansible lint
+
+## Как запустить проект:
+ - # Запускаем playbook
+#ansible-playbook -i environments/stage/inventory playbooks/site.yml
+
+## Как проверить работоспособность:
+ - Тесты в Travis CI
+
+## PR checklist
+ - [x] Выставил label с номером домашнего задания
+ - [x] Выставил label с темой домашнего задания
