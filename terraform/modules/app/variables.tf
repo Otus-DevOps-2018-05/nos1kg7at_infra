@@ -28,3 +28,19 @@ variable "count" {
 
 variable environment_name {
 }
+
+variable app_port {
+  default    = 9292  
+}
+
+variable app_provision_enabled {
+  default    = 1
+}
+
+variable http_port {
+  default   = 80
+}
+
+variable db_address {
+  default = "0.0.0.0"
+}
