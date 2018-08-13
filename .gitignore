@@ -7,6 +7,6 @@
 infra-207813.json
 *.retry
 ansible/gce.ini
-ansible/old/*
+ansible/old/*.json
 vault.key
 jdauphant.nginx
