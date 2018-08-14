@@ -16,6 +16,10 @@ variable public_key_path {
   description = "Path to the public key used for ssh access"
 }
 
+variable private_key_path {
+  description = "Path to the private key used for ssh access"
+}
+
 variable app_disk_image {
   description = "Disk image for reddit app"
   default     = "reddit-app"
@@ -26,15 +30,12 @@ variable "count" {
   default     = 1
 }
 
-variable environment_name {
-}
-
 variable app_port {
   default    = 9292  
 }
 
-variable app_provision_enabled {
-  default    = 1
+variable "app_provision_enabled" {
+  default    = true
 }
 
 variable http_port {
@@ -42,5 +43,5 @@ variable http_port {
 }
 
 variable db_address {
-  default = "0.0.0.0"
+  default = "localhost"
 }

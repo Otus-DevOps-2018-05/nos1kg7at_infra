@@ -39,12 +39,3 @@ variable db_disk_image {
   default     = "reddit-db"
 }
 
-variable environment_name {
-  default = "prod"
-}
-
-app_port {
-  default     = "9292"
-}
-
-

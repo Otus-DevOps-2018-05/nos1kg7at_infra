@@ -10,7 +10,6 @@ module "app" {
   zone             = "${var.zone}"
   app_disk_image   = "${var.app_disk_image}"
   project          = "${var.project}"
-  environment_name = "${var.environment_name}"
 }
 
 module "db" {
@@ -19,7 +18,6 @@ module "db" {
   zone             = "${var.zone}"
   db_disk_image    = "${var.db_disk_image}"
   project          = "${var.project}"
-  environment_name = "${var.environment_name}"
 }
 
 module "vpc" {
@@ -27,5 +25,4 @@ module "vpc" {
   zone             = "${var.zone}"
   project          = "${var.project}"
   source_ranges    = ["0.0.0.0/0"]
-  environment_name = "${var.environment_name}"
 }
