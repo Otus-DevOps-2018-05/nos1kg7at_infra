@@ -4,11 +4,22 @@ provider "google" {
   region  = "${var.region}"
 }
 
+data "terraform_remote_state" "state" {
+  backend = "gcs"
+
+  config {
+    bucket = "infra-tf-state-stage"
+  }
+}
+
 module "app" {
   source           = "../modules/app"
   public_key_path  = "${var.public_key_path}"
+  private_key_path      = "${var.private_key_path}"
   zone             = "${var.zone}"
   app_disk_image   = "${var.app_disk_image}"
+  db_address            = "${module.db.db_internal_ip}"
+  app_provision_enabled = "${var.app_provision_enabled}"
   project          = "${var.project}"
 }
 
@@ -24,5 +35,5 @@ module "vpc" {
   source           = "../modules/vpc"
   zone             = "${var.zone}"
   project          = "${var.project}"
-  source_ranges    = ["0.0.0.0/0"]
+  source_ranges = "${var.source_ranges}"
 }

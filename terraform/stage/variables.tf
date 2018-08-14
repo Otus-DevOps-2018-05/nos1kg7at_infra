@@ -39,3 +39,11 @@ variable db_disk_image {
   default     = "reddit-db"
 }
 
+variable "source_ranges" {
+  description = "Allowed ssh source ip"
+  type        = "list"
+}
+
+variable "app_provision_enabled" {
+  default     = true
+}
