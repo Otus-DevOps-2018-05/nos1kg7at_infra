@@ -33,7 +33,6 @@ resource "null_resource" "app" {
     host        = "${google_compute_address.app_ip.address}"
     user        = "appuser"
     agent       = false
-    private_key = "${file(var.private_key_path)}"
   }
 
   provisioner "file" {
