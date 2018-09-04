@@ -5,4 +5,5 @@
 *.tfvars
 .terraform/
 infra-207813.json
-gce*
+*.retry
+ansible/gce.ini
