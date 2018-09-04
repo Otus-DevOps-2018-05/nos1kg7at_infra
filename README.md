@@ -116,7 +116,7 @@ PR checklist
  - Использованы файлы environments db и app
  - Использована роль nginx из community
  - Применён ansible vault 
- - Настроен ansible lint
+ - Настроен lint
 
 ## Как запустить проект:
  - # Запускаем playbook
