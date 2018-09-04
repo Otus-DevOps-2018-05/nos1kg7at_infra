@@ -26,5 +26,18 @@ variable "count" {
   default     = 1
 }
 
-variable environment_name {
+variable app_port {
+  default    = 9292  
+}
+
+variable "app_provision_enabled" {
+  default    = true
+}
+
+variable http_port {
+  default   = 80
+}
+
+variable db_address {
+  default = "localhost"
 }
