@@ -12,16 +12,16 @@
  
 Как запустить проект:
 Запускаем после формирования структуры с описанием ролей и зависимостей
- - # cd ansible;vagrant up;pip install -r requirements.txt 
+ - #cd ansible;vagrant up;pip install -r requirements.txt 
  - задаем стандартную структуру
-   # cd ansible/roles/db; molecule init scenario --scenario-name default -r db -d vagrant
-   # molecule create;molecule list;molecule login -h instance;molecule converge;molecule verify
+   #cd ansible/roles/db; molecule init scenario --scenario-name default -r db -d vagrant
+   #molecule create;molecule list;molecule login -h instance;molecule converge;molecule verify
  - По окончании удаляем окружение с помощью vagrant destroy -f;molecule destroy
  Как проверить работоспособность:
- - # curl -v http://10.10.10.20:9292/
+ - #curl -v http://10.10.10.20:9292/
 
 ## Как запустить проект:
- - # ansible-playbook -i environments/prod/inventory playbooks/site.yml
+ - #ansible-playbook -i environments/prod/inventory playbooks/site.yml
 
 ## Как проверить работоспособность:
  - Тесты в Travis CI
@@ -43,8 +43,7 @@
  - Настроен lint
 
 ## Как запустить проект:
- - # Запускаем playbook
-#ansible-playbook -i environments/stage/inventory playbooks/site.yml
+ - #ansible-playbook -i environments/prod/inventory playbooks/site.yml
 
 ## Как проверить работоспособность:
  - Тесты в Travis CI
@@ -142,3 +141,4 @@
 ## PR checklist
  - [x] Выставил label с номером домашнего задания
  - [x] Выставил label с темой домашнего задания
+
