@@ -1,15 +1,24 @@
-language: python
-python:
-- '3.6'
-install:
-- pip install ansible==2.3.0 molecule apache-libcloud
+dist: trusty
+sudo: required
+language: bash
+
+before_install:
+- curl https://raw.githubusercontent.com/express42/otus-homeworks/2018-05/run.sh |
+  bash
+
+install: ./ansible/install_deps.sh
+
 script:
-- molecule --debug test
-after_script:
-- molecule --debug destroy
-env:
-  global:
-  - secure: gn6TDJva2u2fZF4tH3ho1nLT0ONprjogWE89M6Ub66rqIa53d8pFSkiElZbTWTHNCYKoQXUH90Rc5J4pmfuwRBdhc2ixaN631z+f/P7w4KBtm8d71SDoCx8MXD1nIu9C0/bvbGttq/TqikMlqlFHgaIKhmt3ZZ2Gq29sTGvpIVADe8wVmHshAP4TkxCTvxEohQoqjb3upRuRtL0KzXDZlY7CeiiqXv8B1I4pDFdb3X02lX/AnjQdVGkUrV7b816JTbefioUe0f926+3wDQ3BwUG4hh2+Lnehfd90gRtBiGwvSJoWMQ8GOsO3XFz5b1SbsapHb1rvPdv8EPLnRjEl58WmA2sVliZSD07jEuTcDFU8LBAPsOc5d36D0hbwenObT8jy3/cF2WZLVqyL0K75tAoSxrvtzr5cdU7t/zwxMz+7qKt2gKuJReAVwumika3pT6oFN8agsxAZeD+8wssBLMlIeXlpUyTbXbtEytXwKm0kEs6y3NXDmiKKPtHzLVLDtb9FJsaC568hYXQtYl963sUPh6NCdeWICb3mDb2IO7Go+YX/UoTHar5RF37e1TdLYW6m+RUSzvgOLGaK3V8VDQ1nI5Cu7vCcOWHj4W/kHwE5Z0cMAFnGdaDQ6rrUyzfzOc9EUytoa/0VTVZdrFpIUWuToJRg3Gk4zi000RXzm6o=
-  - secure: XPC415mSbEfxnT+YpL6s5HXtS/94reUFuSYubMgxX9pj3YPk4PcQsjhnkAbQPj45FPD+skYV+/RIW9gGuCeurQ2FbSqYrYpHLG6c5wxKkB7LoSsUwTOV0VdeKedG7Zq4mh5KwxDLSg42hQy+UJfvKfVx9cW+mFzsW2qa5X4jg/C7rOSu8pCChdWomKvjhXtCstBCVw4OSSNotNtYkMAu94K0+eQccv2+ICQzi/MQWA5iF3oD14Gm6bTGCdJ5rRO95Ky9Wwc1Jz6/WDIpsNQil8GLR9lYX7VryEtoH3VeTEW93XQQ1g6FdpqK5swkjCahyZX5kcdWpPLP4YsA//6AK+xYlPLkk3BFQLhUeaBxyKeLeT38wCE8MD4xgtrAW0xaXBM4r9FI8cdN6Sb70oFqRp6WWMc3OaY0rPWra9XytIBVQxnPYekxiiAihkwunXf3aEdFTxZYVt3AXP7Lb8VCvs6tRg+64Y09aZu0dUQgFN/OpuYtSHlGOAfvkPHm3dACTmMn8d+3C+yopDBjMgeWURk13ctKngJ5kqozz1i6lGeDfPsT8HafrJpR4hZWuTfG+HdVhBacMeZ0vAbu+6rmN+OhJaeAidl+2O9YjvYYl+mTmKRShAvmBJFHzcwh9SmAmtQYgJY0gYDMGJSUpfOroqwDNzvV0UK3DqBz5gmnatY=
-dd:
-  secure: R1sIoCyM7TNONY6u0H5XbzJ9VMzjjCCQo2+5Pth/q52c8FghglkpDWQsyKjsrCbG5G029Q2DGAAsDrl8saHPt/8K4+o5szTBMZfAlRVQdLXIP8D8WwVn/YRFj0yUiYM8oHVqViMlJJSICEjaZewpNKyjGzBXlIKrhAgbDUluACAFSlp4DPsRMeXbZ6HCpXEalWm98TLUZtqet/ODNIrJ8njsbC3kRSPxCYrbT5MHPW17T0DMANTUF/LNcEJU19+h5KVJmaTL60TV+TFWUfyj/BlfsIUzEXUQuqf3N+IjVCXpG91d6QFhCviUy7zIASJS2q1AN6mG7Zi0xsH+AbJYFN0s6oehaty7ti/sARdHwrahTAaaq2ijcbpjMh1oBcHvVjOMtYH0XX2KjwPyt3gRHHdgHgO28KoGdMHU0ju4RFXlotfyRPdcysrTil14ISLxsIqUKfbbO4eEyGcmZjneSLQs8x8U3aFomR6ZDLoHKzZjXwxrNAE9gvKhFYwsG0ByXAYTt6kAhrk7v5J/SWRqqu+01ZV1+juBJSQZ+NW7yGQGMXgU/5EMVFFfnyN8DbXeFntGWmZ7szb23RnFKrzZCU6j6wN13VqwFUfGFV5yBi4uCUioG8jWh9a0QjteBDj84LwBHgF6GQqEOHLXwzYRIM8tzK+xsoVIQJbmMT8mU3E=
+- mkdir -p /home/travis/.ssh/ ; touch /home/travis/.ssh/appuser.pub
+- packer validate -var-file=packer/variables.json.example packer/app.json
+- packer validate -var-file=packer/variables.json.example packer/db.json
+- cd terraform/prod ; terraform init -backend=false ; terraform validate --var-file=terraform.tfvars.example
+- tflint --var-file=terraform.tfvars.example
+- cd ../stage ; terraform init -backend=false ; terraform validate --var-file=terraform.tfvars.example
+- tflint --var-file=terraform.tfvars.example
+- cd ../../ansible ; ansible-lint playbooks/*.yml --exclude=roles/jdauphant.nginx
+
+notifications:
+  slack:
+    rooms:
+      secure: JABlD8cnkt+CEdUoeqlWRRs74wTfdFGCZXtZ0lrxyeNQleiQh/GGvnN178oMbUI9ktseFBaj8Kt3dCcWhpFeBbpn6nzaJbOWVBJKoBzhpwSDmB316L4TC3XQsiW0hFxP3kAxiuthih2pskhQQpxJbGfLOXXMBnmqBr6HU32bGhsQob31Wn5e6jvQeTuXh4doZY0Ur3JBJTlpPlezbOXbdjPsSLE0HKGkEjw1cTSHGah78RiWkY3QsE8mFa3HD0aLmpVh507LBObKSgJ5ShefK8PSZXK6KqL2YFBMXnKbNtMItyp7ZuiUss5P3lWkKjHNgGEd0xx1QrmefyoknidesKhgnsGhvjwU6M3EzFIrIk6zh1O9SIJni7mDFp3SSyTT7Vt5IEVV2zOK7nmLRZOuChmnRkwhyA2gACa9WE4cx1xnzZGZtW5GE5H96pTvQRZX0SUbCFuuEVPDVKasithljdlKPoiI+SYF06ntJJyOKXBL5rpzuP04hJlL/USxbPsOvq/YZ06BzVrEkH7+RKMQtvFGt+KltClTkLoJFcBML+s4FWcwLu1YxsVG1TfMDUti+xxzk3XfAoShq9fzWkM07AkW1Zqj80LyaRJH6LUk+WQXTJr2d/0pQfi/Bb8wMXqjv4eGlS9kQP2z5CW48JJm6DwKEbeZZNSW8ITCz1NxDvI=
