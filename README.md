@@ -16,19 +16,6 @@
  - задаем стандартную структуру
    #cd ansible/roles/db; molecule init scenario --scenario-name default -r db -d vagrant
    #molecule create;molecule list;molecule login -h instance;molecule converge;molecule verify
- - Travis integration
-   #cd ~/.ssh
-   #ssh-keygen -t rsa -f google_compute_engine -C 'travis' -q -N ''
-   #ls -la ~/.ssh/google_compute_engine{,.pub}
-   - описание https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys
-   #gcloud iam service-accounts create travis --display-name travis
-   #gcloud iam service-accounts keys create ./credentials.json --iam-account travis@infra-xxxxxx.iam.gserviceaccount.com
-   - created key [xxx] of type [json] as [./credentials.json] for [travis@infra-xxxxxx.iam.gserviceaccount.com]
-   #gcloud projects add-iam-policy-binding infra-xxxxxx --member serviceAccount:travis@infra-xxxxxx.iam.gserviceaccount.com --role roles/editor
- - Запуск тестов:
-   #cd ~/nos1kg7at_infra/ansible/roles/db
-   #export P_ID=infra-xxxxxx
-   #USER=travis GCE_SERVICE_ACCOUNT_EMAIL=travis@${P_ID}.iam.gserviceaccount.com GCE_CREDENTIALS_FILE=~/.ssh/credentials.json GCE_PROJECT_ID=${P_ID} molecule test
  - По окончании удаляем окружение с помощью vagrant destroy -f;molecule destroy
  Как проверить работоспособность:
  - #curl -v http://10.10.10.20:9292/
