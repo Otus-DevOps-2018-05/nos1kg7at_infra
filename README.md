@@ -1,7 +1,12 @@
+- [Ansible-4](#ansible-4)   [![Build Status](https://travis-ci.com/Otus-DevOps-2018-05/nos1kg7at_infra.svg?branch=ansible-4)](https://travis-ci.com/Otus-DevOps-2018-05/nos1kg7at_infra)
+- [Ansible-3](#ansible-3)   [![Build Status](https://travis-ci.com/Otus-DevOps-2018-05/nos1kg7at_infra.svg?branch=ansible-3)](https://travis-ci.com/Otus-DevOps-2018-05/nos1kg7at_infra)
+- [Ansible-2](#ansible-2)   [![Build Status](https://travis-ci.com/Otus-DevOps-2018-05/nos1kg7at_infra.svg?branch=ansible-2)](https://travis-ci.com/Otus-DevOps-2018-05/nos1kg7at_infra)
+- [Ansible-1](#ansible-1)   [![Build Status](https://travis-ci.com/Otus-DevOps-2018-05/nos1kg7at_infra.svg?branch=ansible-1)](https://travis-ci.com/Otus-DevOps-2018-05/nos1kg7at_infra)
+
 # Выполнено ДЗ №11
 
  - [x] Основное ДЗ
- - [x] Задание со *
+ - [] Задание со * только частично, проблемы travis
 
 ## В процессе сделано:
  - Установил vagrant, описали Vagrantfile
