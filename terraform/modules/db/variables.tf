@@ -26,5 +26,6 @@ variable "count" {
   default     = 1
 }
 
-variable environment_name {
-} 
+variable db_port {
+  default    = 27017  
+}

@@ -1,8 +1,13 @@
 resource "google_compute_instance" "db" {
-  name         = "${var.environment_name}-reddit-db"
+  name         = "reddit-db"
   machine_type = "g1-small"
   zone         = "${var.zone}"
-  tags         = ["reddit-db"]
+
+  tags = ["reddit-db"]
+
+  metadata {
+    ssh-keys = "appuser:${file(var.public_key_path)}"
+  }
 
   boot_disk {
     initialize_params {
@@ -11,24 +16,23 @@ resource "google_compute_instance" "db" {
   }
 
   network_interface {
-    network       = "default"
-    access_config = {}
-  }
+    network = "default"
 
-  metadata {
-    ssh-keys = "appuser:${file(var.public_key_path)}"
+    access_config = {}
   }
 }
 
+#Note: Source tags cannot be used to allow access to an instance's external IP address. Use internal ip address instead.
 resource "google_compute_firewall" "firewall_mongo" {
   name    = "allow-mongo-default"
   network = "default"
 
   allow {
     protocol = "tcp"
-    ports    = ["27017"]
+    ports    = ["${var.db_port}"]
   }
 
   target_tags = ["reddit-db"]
+
   source_tags = ["reddit-app"]
 }

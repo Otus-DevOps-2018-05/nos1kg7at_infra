@@ -4,7 +4,7 @@ variable project {
 
 variable region {
   description = "Region"
-  default     = "europe-west3"
+  default     = "europe-west1"
 }
 
 variable public_key_path {
@@ -21,7 +21,7 @@ variable private_key_path {
 
 variable zone {
   description = "Region"
-  default     = "europe-west3-c"
+  default     = "europe-west1-c"
 }
 
 variable "count" {
@@ -39,6 +39,11 @@ variable db_disk_image {
   default     = "reddit-db"
 }
 
-variable environment_name {
-  default = "stage"
+variable "source_ranges" {
+  description = "Allowed ssh source ip"
+  type        = "list"
+}
+
+variable "app_provision_enabled" {
+  default     = true
 }

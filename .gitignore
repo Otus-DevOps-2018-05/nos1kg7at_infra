@@ -7,3 +7,13 @@
 infra-207813.json
 *.retry
 ansible/gce.ini
+ansible/old/*.json
+vault.key
+jdauphant.nginx
+# Vagrant & molecule
+.vagrant/
+*.log
+*.pyc
+.molecule
+.cache
+.pytest_cache
